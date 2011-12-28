@@ -4,7 +4,7 @@ ShortShell provides defaults, configurations, and utilities for your Bash shells
 
 ## Installation
 
-1. Grab the repository from GitHub: <https://github.com/zachstronaut>
+1. Grab the repository from GitHub: <https://github.com/zachstronaut/shortshell>
 
 2. I recommend putting the `shortshell` folder in your home directory (i.e. `~/shortshell`)
 
