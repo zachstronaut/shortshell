@@ -41,7 +41,7 @@ fi
 alias colormark="echo -n $'\e[1;${PCLR:-32}m*\e[0m'"
 
 # Actually set the bash prompt
-export PS1="\$(colormark)[\$(echo $USER | sed $SEDFLAG \"s~(.).*$~\1~g\")@\h \$(echo \$(pwd | sed $SEDFLAG \"s~($SHORTWEBROOTS)([^/]*)([^/]*/)*~\2\+~g\"))]$ "
+export PS1="\$(colormark)[\$(echo $USER | sed $SEDFLAG \"s~(.).*$~\1~g\")@\h \$(echo \$(pwd | sed $SEDFLAG \"s~($SHORTWEBROOTS)([^/]*)([^/]*/)*~\2\+~g\" | sed $SEDFLAG \"s%$HOME%~%g\" | sed -E \"s%(/[^/]+)+((/[^/]+){3}$)%...\2%g\"))]$ "
 
 
 
