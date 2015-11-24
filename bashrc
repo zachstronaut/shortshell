@@ -86,6 +86,10 @@ alias v='vim'
 alias vi='vim'
 
 
+# Start an HTTP server from a directory
+alias server="open http://localhost:9999/ && python -m SimpleHTTPServer 9999"
+
+
 ## Set width of tabs to 4 in case we encounter hard tabs in diff, grep, etc
 tabs -4
 
