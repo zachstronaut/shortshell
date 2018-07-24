@@ -16,3 +16,5 @@ ShortShell provides defaults, configurations, and utilities for your Bash shells
 Zachary Johnson  
 [@zacharyjohnson](http://twitter.com/zacharyjohnson)  
 <http://www.zachstronaut.com>
+
+:)
