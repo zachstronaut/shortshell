@@ -25,7 +25,10 @@ fi
 DARWIN='darwin'
 LINUX='linux-gnu'
 
-# OS dependent flags
+# Note: Could check if $TERM is xterm-color before
+# setting colormark and cdiff...
+
+# OS specific sed flag
 if [ -n "$(echo $OSTYPE | grep $DARWIN)" ]; then
     SEDFLAG='-E'
 elif [ $OSTYPE == $LINUX ]; then
@@ -34,14 +37,10 @@ else
     echo "shortshell bashrc unknown OSTYPE: $OSTYPE"
 fi
 
-# Could check if $TERM is xterm-color before setting colormark and cdiff...
-
-# Define the colored asterisk that marks our prompt line.
-# Uses environment variable $PCLR to set the color.
-alias colormark="echo -n $'\e[1;${PCLR:-32}m*\e[0m'"
 
 # Actually set the bash prompt
-export PS1="\$(colormark)[\$(echo $USER | sed $SEDFLAG \"s~(.).*$~\1~g\")@\h \$(echo \$(pwd | sed $SEDFLAG \"s~($SHORTWEBROOTS)([^/]*)([^/]*/)*~\2\+~g\" | sed $SEDFLAG \"s%$HOME%~%g\" | sed -E \"s%(/[^/]+)+((/[^/]+){3}$)%...\2%g\"))]$ "
+# Uses environment variable $PCLR to set the color.
+export PS1="\[\033[1;${PCLR:-32}m\]*\[\033[0m\][\$(echo $USER | sed $SEDFLAG \"s~(.).*$~\1~g\")@\h \$(echo \$(pwd | sed $SEDFLAG \"s~($SHORTWEBROOTS)([^/]*)([^/]*/)*~\2\+~g\" | sed $SEDFLAG \"s%$HOME%~%g\" | sed -E \"s%(/[^/]+)+((/[^/]+){3}$)%...\2%g\"))]$ "
 
 
 
