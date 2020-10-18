@@ -37,10 +37,13 @@ else
     echo "shortshell bashrc unknown OSTYPE: $OSTYPE"
 fi
 
+# output current git branch
+alias git_branch="git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'"
+
 
 # Actually set the bash prompt
 # Uses environment variable $PCLR to set the color.
-export PS1="\[\033[1;${PCLR:-32}m\]*\[\033[0m\][\$(echo $USER | sed $SEDFLAG \"s~(.).*$~\1~g\")@\h \$(echo \$(pwd | sed $SEDFLAG \"s~($SHORTWEBROOTS)([^/]*)([^/]*/)*~\2\+~g\" | sed $SEDFLAG \"s%$HOME%~%g\" | sed -E \"s%(/[^/]+)+((/[^/]+){3}$)%...\2%g\"))]$ "
+export PS1="\[\033[1;${PCLR:-32}m\]*\[\033[0m\][\$(echo $USER | sed $SEDFLAG \"s~(.).*$~\1~g\")@\h \$(git_branch)\$(echo \$(pwd | sed $SEDFLAG \"s~($SHORTWEBROOTS)([^/]*)([^/]*/)*~\2\+~g\" | sed $SEDFLAG \"s%$HOME%~%g\" | sed -E \"s%(/[^/]+)+((/[^/]+){3}$)%...\2%g\"))]$ "
 
 
 
